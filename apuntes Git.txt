@@ -1,0 +1,79 @@
+> Actualizar git windows: 
+git clone https://github.com/git/git
+
+> Instalar git Ubuntu: 
+sudo apt-get update
+sudo apt-get install git
+git -v
+
+> Configurar identidad en Git:
+$ git config --global user.name "su_nombre"
+$ git config --global user.email su_correo@example.com
+
+> Comprobar la configuración:
+$ git config --list
+
+> Cree un repositorio mediante el comando init.
+git init
+
+> Consulte el estado de su repositorio.
+git status
+
+> Añade todos los archivos en la carpeta al área de preparación.
+git add .
+
+> Utilice el comando commit para añadir los archivos que están en el área de preparación al repositorio .
+git commit -m "Se añade codigo base" //La opción -m implica que habrá un mensaje de confirmación asociado al commit
+
+> En caso de equivocarse en el commit, puede modificarlo usando la opción amend.
+Use el siguiente comando para modificar el mensaje de confirmación.
+$ git commit --amend -m "nuevo mensaje"
+//la opción -m permite escribir un nuevo mensaje desde la línea de comandos sin tener que abrir un editor.
+
+> Si desea modificar archivos del commit, realice los ajustes correspondientes en la copia de trabajo local, agreguelos al área de preparación y ejecute el siguiente comando.
+$ git commit --amend --no-edit
+//la opción --no-edit permite hacer las correcciones en la confirmación sin cambiar el mensaje.
+
+> Consulte el historial de cambios.
+$ git log
+
+> Git también le permite listar el detalle de los cambios que ocurrieron en cada commit.
+  Utilice la bandera -p con el comando git log para agregar este tipo de información.
+
+> Utilice el comando diff para consultar las diferencias entre un commit y otro.
+$ git diff <id_commit2>..<id_commit1>
+
+> Identifique el ID del commit al cual desea regresar y utilice el comando checkout.
+$ git checkout <id_commit>.
+
+> Variaciones del comando checkout
+Para deshacer cambios en su copia de trabajo local, utilice el comando checkout de la siguiente forma:
+$ git checkout HEAD <ruta_archivo>
+
+> Consulte la conexión al repositorio remoto.
+$ git remote -v // la opción -v permite visualizar la URL que Git ha asociado al repositorio
+
+> Note la palabra origin antes de la URL, este es el nombre que Git da al servidor por defecto 
+una vez clonado, en caso de querer cambiarlo ejecute el siguiente comando:
+$ git remote rename origin <nuevo_nombre>
+
+> Sincronice los cambios con el repositorio remoto.
+$ git push -u repo_remoto master //La opción -u mantiene un registro de la rama a la que se hace push,
+ lo anterior con el fin de evitar conflictos o ausencia de información al hacer pull.
+
+
+> Para devolverse a una versión anterior utilice el comando reset. 
+Dicho comando restablece el apuntador de la versión actual (HEAD) a la especificada.
+Es posible usarlo de diferentes formas, en este tutorial aprenderá dos:
+-La primera consiste en usar el id del commit al cual se desea regresar:
+$ git reset --hard <id_commit>.
+-La segunda, especificando el número de commits que se desea devolver:
+$ git reset --hard HEAD~<numero_de_commit_atras>
+
+> Actualice los cambios en el repositorio remoto.
+$ git push -f origin master 
+//la opción -f o --force sobre escribe toda la estructura y secuencia de 
+commits en el repositorio remoto. Lo recomendable es asegurarse de hacer 
+pull y estabilizar el código en el repositorio local antes de hacer push.
+
+
